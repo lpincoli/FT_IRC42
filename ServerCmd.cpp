@@ -329,6 +329,8 @@ int Server::kick(std::string command, int j)
 		std::string msg1 = ":" + getList()[j].getNickname() +  "!" + " KICK " + channel + " " + nick + " " + reason + "\n";
 		ft_send_all_chan(*this, ch, msg1);
 		sendData(j, msg);
+		if(ch.isUserSbirro(nick))
+			ch.removeSbirro(nick);
 		ch.getListUsers().erase(it);
 		std::cout << "Utente " << it->getNickname() << " rimosso dal canale!" << std::endl;
 	}
