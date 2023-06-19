@@ -23,11 +23,6 @@ std::list<User>& Channel::getSbirri()
 	return (_sbirri);
 }
 
-std::list<User>& Channel::getFemminucce()
-{
-	return (_femminucce);
-}
-
 std::list<User>& Channel::getInvited()
 {
 	return (_invited);
@@ -75,11 +70,6 @@ void Channel::setSbirri(User &sbirri)
 	_sbirri.push_back(sbirri);
 }
 
-void Channel::setFemminucce(User &femminucce)
-{
-	_femminucce.push_back(femminucce);
-}
-
 void Channel::setTopic(std::string& topic)
 {
     _topic = topic;
@@ -103,27 +93,6 @@ int Channel::getEmpty()
 std::map<std::string, int> Channel::getMode(std::string)
 {
 	return(_mode);
-}
-
-void Channel::initMode()
-{
-	_mode.insert(std::pair<std::string, int>("i", 0));
-	_mode.insert(std::pair<std::string, int>("t", 0));
-	_mode.insert(std::pair<std::string, int>("k", 0));
-	_mode.insert(std::pair<std::string, int>("o", 0));
-	_mode.insert(std::pair<std::string, int>("l", 0));
-}
-
-void Channel::setMode(std::string& mode)
-{
-	std::map<std::string, int>::iterator it = _mode.find(mode);
-	if (it != _mode.end())
-	{
-		if (it->second == 0)
-			it->second++;
-		else
-			it->second = 0; 
-	}
 }
 
 void Channel::setPw(std::string &pw)
@@ -226,22 +195,6 @@ void Channel::removeInvited(std::string invited)
 	}
 	if (finder == _invited.end())
 	 	std::cout << "L'utente non è stato invitato nel canale!" << std::endl;
-}
-
-void Channel::removeFemminuccia(std::string femminuccia)
-{
-	std::list<User>::iterator finder = _femminucce.begin();
-	for(; finder != _femminucce.end(); finder++)
-	{
-		if (finder->getNickname() == femminuccia)
-		{
-			_femminucce.erase(finder);
-			std::cout << "Utente rimosso dalle femminucce del canale!" << std::endl;
-			break ;
-		}
-	}
-	if (finder == _femminucce.end())
-	 	std::cout << "L'utente non è una femminuccia del canale!" << std::endl;
 }
 
 int	Channel::isInvOn()

@@ -22,18 +22,15 @@ class Channel
 		std::list<User> 	_users;
 		std::list<User> 	_sbirri;
 		std::list<User> 	_invited;
-		std::list<User> 	_femminucce;
-		
         std::string _topic = "Welcome to the channel!";
-		int _pwOn = 0;
 		std::string _pw;
+		int _pwOn = 0;
 		int _invOn = 0;
 		int _topicOn = 0;
         int _empty = 0;
 		int _limitOn = 0;
 		int _limit = 50;
 		int _stop = 0;
-		std::map<std::string, int> _mode;
 
 	public:
 		Channel(std::string &name);
@@ -41,12 +38,10 @@ class Channel
 		std::string& getName();
 		std::list<User>& getListUsers();
 		std::list<User>& getSbirri();
-		std::list<User>& getFemminucce();
 		std::list<User>& getInvited();
         std::string& getTopic();
 		std::string &getUserNick(int socket);
 		User &getUser(int socket);
-		std::map<std::string, int> getMode(std::string);
 		std::string getPw();
 		int	isPwOn();
 		int	isInvOn();
@@ -57,9 +52,7 @@ class Channel
 		void setLimitOn(Server & serv, int limit);
 		void setopicOn();
 		void setPw(std::string &pw);
-		void setMode(std::string& mode);
         void setTopic(std::string& topic);
-		void setFemminucce(User &femminucce);
 		void setSbirri(User &sbirri);
 		void setInvited(User &invited);
 		void setName(std::string &name);
@@ -77,7 +70,6 @@ class Channel
 		void remove_User(Channel ch, std::string user);
 		void removeSbirro(std::string sbirro);
 		void removeInvited(std::string invited);
-		void removeFemminuccia(std::string femminuccia);
 		int checkFull();
 };
 

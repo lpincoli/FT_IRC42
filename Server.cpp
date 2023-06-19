@@ -7,7 +7,7 @@ Server::~Server(){}
 
 void	Server::generateBestemmieFromFile()
 {
-	std::ifstream file("pucchiacca.txt");
+	std::ifstream file("insulti.txt");
 	std::string str;
 	while (std::getline(file, str))
 	{
@@ -31,7 +31,7 @@ std::string    &Server::randomBestemmia()
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     int random = std::rand() % _bestemmie.size();
 
-    auto it = _bestemmie.begin();
+    std::list<std::string>::iterator it = _bestemmie.begin();
     std::advance(it, random);
 
     return *it;

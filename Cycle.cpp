@@ -63,7 +63,6 @@ int cycle(Server &slav)
 {
 	int flags = fcntl(slav.getServerSock(), F_GETFL, 0);
 	fcntl(slav.getServerSock(), F_SETFL, flags | O_NONBLOCK);
-	std::cout << "List size: " << slav.getList().size() << std::endl;
     struct pollfd fds[512];
 	fds[0].events = POLLIN;
 	fds[0].fd = slav.getServerSock();
@@ -81,7 +80,6 @@ int cycle(Server &slav)
 		if (fds[0].revents && POLLIN)
 		{
 			int clientsockfd = accept(slav.getServerSock(), NULL, NULL);
-			std::cout << "Clientsockfd: " << clientsockfd << std::endl;
 			if (clientsockfd < 0)
 			{
 				std::cout << "Accept fallito!" << std::endl;
@@ -135,9 +133,6 @@ int cycle(Server &slav)
 						close(fds[j].fd);
 						slav.getList().erase(fds[j].fd);
 						std::cout << errno << std::endl;
-
-						std::cout << "MIO SOCK: " << fds[j].fd<< std::endl;
-						std::cout << "SERVER SOCK: " << fds[0].fd<< std::endl;
 						return 0;
 					}
 				}
