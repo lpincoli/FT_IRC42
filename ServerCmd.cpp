@@ -396,8 +396,6 @@ int Server::invite(std::string command, int j)
 		sendData(j, "IRCserv L'utente invitato non esiste!\r\n");
 		return (1);
 	}
-	std::cout << "GETNICK SENDER:   " <<  getList()[j].getNickname() << std::endl;
-	std::cout << "INVITED USER:   " <<  pippo << std::endl;
 	std::map<int, User>::iterator finder = getList().find(getUserSockFromNick(pippo));
 	ch.setInvited(finder->second);
 	std::string msg = ":" + pippo + " INVITE " + getList()[j].getNickname() + " " + channel + "\r\n";
