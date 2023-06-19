@@ -368,7 +368,6 @@ int Server::topic(std::string command, int j)
 	std::string msg = ":" + getList()[j].getNickname() + " TOPIC " + channel + " " + topic + "\r\n";
 	std::string msg1 = ":" + getList()[j].getNickname() +  "!" + " TOPIC " + channel + " " + topic + "\n";
 	ft_send_all(*this, channel, j, ch.getListUsers(), msg1);
-	sendData(j, msg);
 	ch.setTopic(topic);
 	return (1);
 }
