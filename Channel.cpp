@@ -90,11 +90,6 @@ int Channel::getEmpty()
     return (_empty);
 }
 
-std::map<std::string, int> Channel::getMode(std::string)
-{
-	return(_mode);
-}
-
 void Channel::setPw(std::string &pw)
 {
 	_pwOn = 1;

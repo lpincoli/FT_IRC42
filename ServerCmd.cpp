@@ -45,11 +45,6 @@ int	Server::who(std::string nick, int j)
 		if (itChannel->getName() == str)
 		{
 			list = ":" + getServerName() + "! 353 " + getList()[j].getNickname() + " = " + itChannel->getName() + " :";
-			for (std::list<User>::iterator itOperator = itChannel->getFemminucce().begin(); itOperator != itChannel->getFemminucce().end(); ++itOperator)
-			{
-			// :hostname 353 nickname = #channel :nickname nickname (can be more than one here or sent in multiple messages)
-				list += "@" + itOperator->getNickname() + " ";
-			}
 			for (std::list<User>::iterator itClient = itChannel->getListUsers().begin(); itClient != itChannel->getListUsers().end(); ++itClient)
 			{
 		// :hostname 353 nickname = #channel :nickname nickname (can be more than one here or sent in multiple messages)
