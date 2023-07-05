@@ -6,7 +6,6 @@
         <li><a href="#about">About</a></li>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#usage">Usage</a></li>
-        <li><a href="#bonus">Bonus</a></li>
     </ol>
     <h2 id="about">About</h2>
     <p>ft_irc is a project where you'll build an IRC server in C++ 98. The server should support multiple clients, allow for authentication, setting a nickname, a username, joining a channel, and sending/receiving private messages.</p>
@@ -18,10 +17,8 @@
     </ol>
     <h2 id="usage">Usage</h2>
     <p>Launch your IRC server from the command line after running 'make'. You'll need to provide a port number and a password for client connections. Example:</p>
-    <pre>
-$> make
-$> ./ircserv 6667 mypassword
-    </pre>
+    <pre><code>./ircserv 6667 mypassword</code></pre>
+    <p>Note that this is only a server, you'll need a client to connect to it if you want to try the program properly.</p>
     <h3>Features:</h3>
     <ul>
         <li>Support multiple clients</li>
@@ -31,7 +28,9 @@ $> ./ircserv 6667 mypassword
         <li>Distinguish between operators and regular users</li>
         <li>Implement specific commands for channel operators</li>
     </ul>
-    <h2 id="bonus">Bonus</h2>
-    <p>For the bonus part of the project, you can add features like handling file transfers and incorporating a bot to make the IRC server look more like an actual IRC server.</p>
+    
+<h2>Subject</h2>
+
+<p>For more information about the project, read the subject file.</p>
 </body>
 </html>
