@@ -8,7 +8,7 @@
         <li><a href="#usage">Usage</a></li>
     </ol>
     <h2 id="about">About</h2>
-    <p>ft_irc is a project where you'll build an IRC server in C++ 98. The server should support multiple clients, allow for authentication, setting a nickname, a username, joining a channel, and sending/receiving private messages.</p>
+    <p>ft_irc is a project where you'll build an IRC server in C++. The server should support multiple clients, allow for authentication, setting a nickname, a username, joining a channel, and sending/receiving private messages.</p>
     <h2 id="installation">Installation</h2>
     <ol>
         <li>Clone the repository: <pre><code>git clone https://github.com/lpincoli/FT_IRC42.git</code></pre></li>
