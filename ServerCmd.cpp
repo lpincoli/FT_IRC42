@@ -83,11 +83,9 @@ int Server::privmsg(std::string command, int j)
 	std::string nick;
 	ss >> nick;
 	std::string sender_nick = getList()[j].getNickname();
-    std::cout << "Sender: " << sender_nick << std::endl;
 	if (nick[0] == '#')
 	{
 		std::string msg;
-		std::cout << "Nick: " << nick << std::endl;
 		Channel& chan = getChanFromName(nick);
 		std::list<User>::iterator it = chan.getListUsers().begin();
 		if (chan.getEmpty() == true)
@@ -120,7 +118,6 @@ int Server::privmsg(std::string command, int j)
 		}
 		msg.erase(msg.length() - 1, 1);
 		msg += "\r\n";
-		std::cout << "Messaggio: " << msg << std::endl;
 		while (ite != chan.getListUsers().end())
 		{
 			if ((*ite).getNickname() != sender_nick)
@@ -131,8 +128,6 @@ int Server::privmsg(std::string command, int j)
 	else
 	{
 		std::string msg;
-		std::cout << "Nick: " << nick << std::endl;
-        std::cout << "command: " << command << std::endl;
 		if (isUserReal(nick))
 		{
 			int r_sock = getUserSockFromNick(nick);
@@ -149,7 +144,6 @@ int Server::privmsg(std::string command, int j)
 			msg.erase(msg.length() - 1, 1);
 			msg += "\r\n";
 
-			std::cout << "Messaggio: SICURO: " << msg << std::endl;
 			sendData(r_sock, msg);
 		}
 	}
@@ -161,7 +155,6 @@ int Server::join(std::string command, int j)
 	std::istringstream ss(command);
 	std::string channel;
 	ss >> channel;
-	std::cout << "Channel: " << channel << std::endl;
 	std::list<Channel>::iterator it = getChannels().begin();
 	for(it; it != getChannels().end(); it++)
 	{
@@ -195,19 +188,14 @@ int Server::join(std::string command, int j)
 			{
 				std::string pw_ins;
 				ss >> pw_ins;
-				std::cout << "PW MESSA DA UTENTE: " << std::endl;
-				std::cout << "PRIMO STEP" << std::endl;
 				if (pw_ins != ch.getPw())
 				{
-					std::cout << "SECONDO STEP" << std::endl;
-					std::cout << "CHAN PW: " << ch.getPw() << std::endl;
 					sendData(j, "You need to join with the correct channel password!\r\n");
 					return (1);
 				}
 			}
 			else
 			{
-				std::cout << "TERZO STEP" << std::endl;
 				sendData(j, "IRCserv You need to join with the channel password!\r\n");
 				return (1);
 			}
@@ -236,7 +224,6 @@ int		Server::part(std::string command, int j)
 	std::stringstream ss(command);
 	std::string channel;
 	ss >> channel;
-	std::cout << "Channel: " << channel << std::endl;
 	Channel& ch = getChanFromName(channel);
 	std::list<User>::iterator it = ch.getListUsers().begin(); 
 	if(!isChanReal(channel))// channel not found
@@ -284,7 +271,6 @@ int Server::kick(std::string command, int j)
 	std::stringstream ss(command);
 	std::string channel;
 	ss >> channel;		//save name of channel
-	std::cout << "Channel: " << channel << std::endl;
 	User sender_user = getList().find(j)->second; // get User from socket
 	if(!isChanReal(channel))// channel not found
 	{
@@ -343,7 +329,6 @@ int Server::topic(std::string command, int j)
 	std::stringstream ss(command);
 	std::string channel;
 	ss >> channel;
-	std::cout << "Channel: " << channel << std::endl;
 	if(!isChanReal(channel))
 	{
 		std::cout << "Canale non trovato!" << std::endl;
@@ -364,7 +349,6 @@ int Server::topic(std::string command, int j)
 		command.erase(0, 1);
 	while(ss >> tmp)
 		topic += " " + tmp;
-	std::cout << "Topic: " << topic << std::endl;
 	std::string msg = ":" + getList()[j].getNickname() + " TOPIC " + channel + " " + topic + "\r\n";
 	std::string msg1 = ":" + getList()[j].getNickname() +  "!" + " TOPIC " + channel + " " + topic + "\n";
 	ft_send_all(*this, channel, j, ch.getListUsers(), msg1);
