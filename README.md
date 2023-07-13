@@ -18,7 +18,7 @@
     <h2 id="usage">Usage</h2>
     <p>Launch your IRC server from the command line after running 'make'. You'll need to provide a port number and a password for client connections. Example:</p>
     <pre><code>./ircserv 6667 mypassword</code></pre>
-    <p>Note that this is only a server, you'll need a client to connect to it if you want to try the program properly.</p>
+    <p>⚠️ Note that this is only a server, you'll need a client to connect to it if you want to try the program properly.</p>
     <h3>Features:</h3>
     <ul>
         <li>Support multiple clients</li>
